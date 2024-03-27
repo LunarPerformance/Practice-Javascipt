@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .rectangle-timer{
+                background-color:aqua;
+                height: 10%;
+                width: 10%;
+                color:white;
+                
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Timer</h1>
+        <div class="rectangle-timer">
+            <h2 id="a"></h2>
+        </div>
+        <script>
+            const timer = document.getElementsByClassName("rectangle-timer");
+           function countdown(a){ 
+            const myInterval = setInterval(mytimer, 1000);
+            function mytimer(){
+                
+                    document.getElementById('a').innerHTML =+ a +"s";
+                    a -- || clearInterval(myInterval) ;
+                    ;
+            }
+        }
+        countdown(10);
+        </script>
+    </body>
+</html>
