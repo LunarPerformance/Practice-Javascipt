@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("https://dummyjson.com/products", function(data, status){
+      console.log(data.products[0].title);
+      alert("Data: " + data + "\nStatus: " + status);
+      // document.getElementById("a").innerHTML = 
+      const string1 = `<table>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th><DiscountPercentage</th>
+          <th>Rating</th>
+          <th>Stock</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Thumbnail</th>
+          <th>Images</th>
+        </tr>`        
+      const string3 = `</table>`
+      let string2 = ``;
+      const storage = data.products;
+      storage.forEach((value,index, array) => {
+        string2 += generateTrHtml(value);
+      })
+      document.getElementById("a").innerHTML = `${string1} ${string2} ${string3} `;
+    }
+    
+    ).done(function(json){
+        
+    });
+    ;
+
+  });
+
+ 
+
+}   
+);
+function generateTrHtml(data){
+  let lis = data.images.map((image, index) => `<li><img src="${image}"/></li>`).join('');
+  const trHtml = `<tr>
+    <td> ${data.title}</td>
+    <td> ${data.description}</td>
+    <td> ${data.price}</td>
+    <td> ${data.discountPercentage}</td>
+    <td> ${data.rating}</td>
+    <td> ${data.stock}</td>
+    <td> ${data.brand}</td>
+    <td> ${data.category}</td>
+   <td> <image src="${data.thumbnail}" /></td>
+    <td> <ul>${lis}</ul></td>
+    </tr>`
+    return trHtml;
+}
+</script>
+</head>
+<body>
+<button>Click</button>
+<p id = "a"></p>
+</body>
+</html>
